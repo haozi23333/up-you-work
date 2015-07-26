@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="L" charset="utf-8" />
+    <title>你是发烧吗</title>
+    <script type="text/javascript">
+        var a = new Array([1, 1, 1, 1, 1],
+                         [1, 0, 0, 0, 1],
+                         [1, 0, 1, 0, 1],
+                         [1, 0, 0, 0, 1],
+                         [1, 1, 1, 1, 1]);
+        window.onload = function hehe() {
+            var i, n;
+            for (i = 0; i < a.length; i++) {
+                for (n = 0; n < a[i].length; n++) {
+                    var b = document.createElement("div");
+                    b.style.cssText = "width:80px;height:80px;position:absolute;";
+                    b.style.top = i * 81 + "px";
+                    b.style.left = n * 81 + "px";
+                    if (a[i][n] == 1) {
+                        b.style.backgroundImage="url(Images/你发烧啊.jpg)";
+                    }
+                    document.body.appendChild(b);
+                }
+            }
+        }
+      
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+
+    <script src="javascripts/jquery-2.1.4.min.js"></script>
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="javascripts/ufrom.js"></script>
+    <link href="stylesheets/update.css" rel="stylesheet" />
+    <script src="javascripts/jquery-2.1.4.min.js"></script>
+    <script src="javascripts/update.js"></script>
+    <script src="javascripts/cookie.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" style="height:60px">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="./img/logo.png" style="margin-top:-13px;margin-left:-15px" />
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="#">Home</a></li>
+                    <li><a href="#about">热门</a></li>
+                    <li><a href="#contact">like</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">选项  <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">a</a></li>
+                            <li><a href="#">b</a></li>
+                            <li><a href="#">c</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">DD</li>
+                            <li><a href="#">d</a></li>
+                            <li><a href="#">e</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=""><a class="glyphicon glyphicon-user "></a><span class="sr-only">(current)</span></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div style="margin-top:20%;width:80%;height:400px;background-color:white;margin-left:auto;margin-right:auto">
+
+
+        <div style="padding-left:20%;padding-right:20%">
+
+            <div class="input-group" style="padding-top:20px;">
+                <span class="input-group-addon" id="basic-addon1">作品名称：</span>
+                <input type="text" class="form-control" placeholder="work name" aria-describedby="basic-addon1" id="name">
+            </div><span class="input-group-addon" id="basic-addon2">/*给你的作品起一个响当当的名字辣(ฅ>*ω<*ฅ) /></span>
+            <div class="input-group" style="padding-top:20px;">
+                <span class="input-group-addon" id="basic-addon1">作品标签：</span>
+                <input type="text" class="form-control" placeholder="Lable" aria-describedby="basic-addon1" id="lable">
+            </div>
+            <span class="input-group-addon" id="basic-addon2">/*作品的分类->html->美工->程序->……*/</span>
+            <div class="input-group" style="padding-top:20px;">
+                <span class="input-group-addon" id="basic-addon1">作品主页：</span>
+                <input type="text" class="form-control" placeholder="index.html" aria-describedby="basic-addon1" id="index">
+            </div>
+            <span class="input-group-addon" id="basic-addon1">/*上传作品的首页*/</span>
+     
+       
+           <div class="input-group" style="padding-top:20px;">
+                <span class="input-group-addon" id="basic-addon1">文件</span>
+                <input type="file" id="update" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+            <span class="input-group-addon" id="basic-addon1">/*1.注意现在上传的是zip文件*/</span>
+            <div></div>
+            <span class="input-group-addon" id="basic-addon2" style="padding-top:10px">/*2.请将主页放置在根目录下面*/</span>
+            <div></div>
+            <span class="input-group-addon" id="basic-addon2" style="padding-top:10px">/*3.文件名字不要包含‘.’,以及中文*/</span>
+            <div></div>
+            <span class="input-group-addon" id="basic-addon2" style="padding-top:10px">/*4.注意请将不必要的文件删除后上传，禁止使用绝对路径*/</span>
+            <div class="input-group" style="padding-top:20px">
+                <span class="input-group-addon" id="basic-addon1">作品简介：</span>
+                <input type="text" class="form-control" placeholder="介绍" aria-describedby="basic-addon1" id="jianjie">
+            </div>
+            <span class="input-group-addon" id="basic-addon2">/*作品的介绍辣*/</span>
+            <button class="btn btn-success" style="margin-left:40%;margin-top:20px" onclick="UpladFile()"> 提交</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
