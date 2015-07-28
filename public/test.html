@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+
+
+    </title>
+<script src="javascripts/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<input type="file" id="a1">
+<input type="file" id="a2">
+
+<buttom >
+
+
+</buttom>
+</body>
+</html>
+<script>
+    function a() {
+        var f1 = document.getElementById("a1").files;
+        var f2 = document.getElementById("a2").files;
+        var form = new FormData();
+
+        form.append("wenjian", f1[0]);
+        form.append("tupian", f2[1]);
+       // console.log(fileObj.name);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", FileController, true);
+        if (i + 1 == filelist.length) {
+            xhr.onload = function () {
+                alert("上传完成!");
+            };
+        }
+        jQuery.ajax({
+            url: "10.3.14.51:5656" + "/update",
+            type: "POST",
+            data: form,
+            processData: false,  // 告诉jQuery不要去处理发送的数据
+            contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+            success: function (req) {
+                if (req.type == 'success') {
+                    window.location.href = dizhi + "/show.html?" + req.msg;
+                }
+                if (req.type = 'error') {
+                    alert(req.msg);
+                    return 0;
+                }
+            }
+        });
+    }
+</script>

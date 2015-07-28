@@ -1,8 +1,9 @@
 ﻿.product_box{width:285px;height:413px;background:#ffffff;margin-top:60px;margin-left:50px;border-radius:5px;overflow:hidden;  border: 2px solid rgb(0, 255, 255);}
-.pro_picture{width:108px;height:103px;background:Red;margin-top:25px;margin-left:90px;}
+.pro_picture{width:108px;height:103px;margin-top:25px;margin-left:90px;}
+/*//background:Red;*/
 .product_name{width:195px;height:22px;margin-top:20px;font-size:20px;text-align:center;color:#e5262d;margin-left:auto;margin-right:auto}
 .user_info{width:70px;height:25px;margin-top:20px;margin-left:98px;}
-.user_picture{width:25px;height:25px;float:left;}   
+.user_picture{width:25px;height:25px;float:left;}
 .user_name2{font-family:微软雅黑;font-size:12px;margin-left:5px;margin-top:5px;color:#262626;}
 .from_box{width:270px;height:40px;margin-top:12px;margin-left:auto;margin-right:auto}
 .pro_from{margin-left:35px;float:left;}
@@ -12,4 +13,3 @@
 .user_from{color:#000000;font-size:15px;margin-top:10px; float:left;margin-left: 20px;}
 .line2{height:35px; width:2px;background:#d9d9d9;float:left;margin-top:-5px;margin-left:20px;}
 .tag2{float:left;margin-top:-8px;margin-left:25px;width:50px; margin-left:auto;}
-

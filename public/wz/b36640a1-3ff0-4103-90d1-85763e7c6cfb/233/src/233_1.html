@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{height:100%;overflow:hidden;}
+    </style>
+</head>
+<body onkeydown="keydown(this)">
+<canvas id="canvas"style="display:block;margin:50px auto;"></canvas>
+<script>
+var map=[
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0],
+     [1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1],
+     [1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1],
+     [1,1,0,1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,0,1],
+     [1,1,0,1,0,0,1,1,1,1,1,1,1,1,0,1,0,1,0,1],
+     [1,1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,1,0,1],
+     [2,0,0,1,0,0,0,1,0,1,0,1,0,1,1,1,0,1,0,1],
+     [1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,0,0,0,1],
+     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+
+]
+</script>
+<script>
+        var x= 0,y=7;
+        var d=1;
+        var canvas=document.getElementById("canvas");
+        canvas.height=window.innerHeight;
+        canvas.width=window.innerWidth;
+        var context=canvas.getContext("2d");
+       var b_height =50,b_width=50;
+
+        function Addblock(x,y,color,cxt){
+            cxt.beginPath();
+                    cxt.fillStyle = color;
+            cxt.fillRect(x,y,b_width,b_height);
+    }
+        function mp(cxt){
+            cxt.clearRect(0,0,canvas.height,canvas.width);
+            for(var i=0;i<map.length;i++){
+                for(var j=0;j<map[i].length;j++){
+                    if(map[i][j]==1){
+                        Addblock((b_height+1)*j,(b_width+1)*i,"red",cxt);
+                    }
+                    if(map[i][j]==0){
+                        Addblock((b_height+1)*j,(b_width+1)*i,"white",cxt);
+                    }
+                    if(map[i][j]==2){
+                        Addblock((b_height+1)*j,(b_width+1)*i,"green",cxt);
+                    }
+                }
+            }
+
+        }
+        window.onload=function(){
+            mp(context);
+            fashe(context);
+    }
+        function keydown(e)
+        {
+            var _e=window.event.keyCode;
+            switch (_e)
+            {
+                case 37://左
+                    if(map[y][x-1]==0)
+                    {
+                        map[y][x-1]=2;
+                        map[y][x]=0;
+
+                        x--;
+                        d=2;
+                    }
+                    break;
+                case 38://上
+                    if(map[y-1][x]==0)
+                    {
+                        map[y-1][x]=2;
+                        map[y][x]=0;
+                        y--;
+                        d=0;
+                    }
+                    break;
+                case 39://右
+                    if(map[y][x+1]==0)
+                    {
+                        map[y][x+1]=2;
+                        map[y][x]=0;
+
+                        x++;
+                        d=3;
+                    }
+                    break;
+                case 40://下
+
+                    if(map[y+1][x]==0)
+                    {
+                        map[y+1][x]=2;
+                        map[y][x]=0;
+
+                        y++;
+                        d=1;
+                    }
+                    break;
+            }
+        }
+
+        setInterval(function (){ mp(context);
+        },34);
+
+
+</script>
+</body>
+</html>

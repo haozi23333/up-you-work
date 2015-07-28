@@ -17,7 +17,8 @@ window.location.href = dizhi+"/404.html";
   return 0;
 }
 d=res.index;
-for(var i=1;i<d.split("/").length;i++){c=c+"/"+d.split("/")[i]}
+for(var i=1;i<d.split("/").length;i++){
+  c=c+"/"+d.split("/")[i]}
                 document.getElementById('wy').src = dizhi+c;
             },
         });

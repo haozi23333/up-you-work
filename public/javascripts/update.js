@@ -22,9 +22,13 @@ function UpladFile() {
         return 0;
     }
     var filelist = document.getElementById("update").files;
-
+    var filelist2 = document.getElementById("update_img").files;
     if (!filelist) {
         alert("文件不能为空");
+        return 0;
+    }
+    if (!filelist2) {
+        alert("image不能为空");
         return 0;
     }
     if (filelist[0].name.split('.')[1] !== 'zip') {
@@ -32,11 +36,12 @@ function UpladFile() {
     }
     for (var i = 0; i < filelist.length; i++) {
         var fileObj = filelist[i]; // 获取文件对象
-        var FileController = dizhi + '/update';                    // 接收上传文件的后台地址
+        var FileController =dizhi+ '/update';                    // 接收上传文件的后台地址
         // FormData 对象
         var form = new FormData();
         UID = "wqerfwqef";
         form.append("wenjian", fileObj);
+        form.append("tupian", filelist2[0]);
         form.append("UID", getCookie('user'));
         form.append("name", name);
         form.append("lable", lable);
@@ -53,7 +58,7 @@ function UpladFile() {
             };
         }
         jQuery.ajax({
-            url: dizhi + "/update",
+            url:"/update",
             type: "POST",
             data: form,
             processData: false,  // 告诉jQuery不要去处理发送的数据
@@ -75,7 +80,7 @@ window.onload = function () {
 
     if (!getCookie('user')) {
         alert('登陆过期重新登陆');
-        window.location.href = dizhi + "/login.html"
+        window.location.href = "http:10.3.16.2:8888" + "/login.html"
     }
 
 }

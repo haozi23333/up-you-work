@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    var ball={x:312,y:100,r:20,yg:2,xg:0.5,vx:-4,vy:0,color:"#005588"};
+    window.onload=function() {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 500;
+        canvas.height = 400;
+        var context=canvas.getContext("2d");
+        setInterval(function(){
+            render(context);
+            update();
+        },50)
+    }
+    function update(){
+        ball.x+=ball.vx;
+        ball.y+=ball.vy;
+        ball.vy+=ball.yg;
+        ball.vx+=ball.xg;
+        if(ball.y>=400-ball.r){
+            ball.y=400-ball.r;
+            ball.vy=-ball.vy;
+        }
+        if(ball.x>=500-ball.r){
+            ball.x=500-ball.r;
+            ball.vx=-ball.vx;}
+    }
+    if(ball.y>=){
+        ball.y=400-ball.r;
+        ball.vy=-ball.vy;
+    }
+    function render(cxt){
+        cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+        cxt.fillStyle=ball.color;
+        cxt.beginPath();
+        cxt.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+        cxt.closePath()
+        cxt.fill();
+    }
+
+</script>
+</body>
+</html>

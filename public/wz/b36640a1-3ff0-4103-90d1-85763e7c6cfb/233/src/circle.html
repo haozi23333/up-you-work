@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+//    window.onload=function(){
+//        var canvas=document.getElementById("canvas");
+//        canvas.width=1024;
+//        canvas.height=768;
+//        var context=canvas.getContext("2d");
+//        context.linewidth=5;
+//        context.strokeStyle="#005588"
+//        for(var i=0;i<10;i++) {
+//            context.beginPath()
+//            context.arc(400, 300, 20, 0, 2 * Math.PI, true);//centerx(圆心x坐标),centery（圆心y坐标),radius,startingAngle(开始弧度),endingAngle(结束弧度),true(逆时针)，false(顺时针)
+//            context.stroke();
+//        }
+//    }
+    window.onload= function () {
+        var canvas=document.getElementById("canvas");
+        canvas.width=1024;
+        canvas.height=768;
+        var context=canvas.getContext("2d");
+        context.linewidth=5;
+        context.strokeStyle="#005588";
+        context.beginPath()
+        context.arc(300,300,20,0,2*Math.PI,true)
+        context.stroke()
+        context.closePath()
+    }
+</script>
+</body>
+</html>

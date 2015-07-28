@@ -26,11 +26,14 @@ window.onload = function () {
             len = zp.length;
             for (var i = 0; i < len; i++)
             {
-if(zp[i].index==""&&zp[i].index=="1")
+if(zp[i].index!="")
 {
-    creat('#a'+i%3, { zp_name: zp[i].zp_name, UID: zp[i].UID, account:zp[i].account , lable:zp[i].lable, Text: zp[i].introduction, "laiyuan": zp[i].account })
+  if (zp[i].index!="1") {
+    creat('#a'+i%3, { img:zp[i].img,zp_name: zp[i].zp_name, UID: zp[i].UID, account:zp[i].account , lable:zp[i].lable, Text: zp[i].introduction, "laiyuan": zp[i].account })
+
+  }
 }
-            
+
             }
         },
     });

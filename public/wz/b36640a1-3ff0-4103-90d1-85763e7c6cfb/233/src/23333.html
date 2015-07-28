@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+</head>
+<body>
+<canvas id="canvas">
+    <p>Your browser does not support the canvas element!</p>
+</canvas>
+</body>
+</html>
+<script type="text/javascript">
+    Array.prototype.remove = function(obj) {
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] === obj) {
+                this.splice(i, 1);
+                break;
+            }
+        }
+    }
+    function BasicObject(x, y, order) {
+        this.x = x;
+        this.y = y;
+        this.order = isNaN(order) ? 0 : order;
+
+        this.addTo = function(objects) {
+            objects.push(this);
+            objects.sort(function(a, b) {return a.order - b.order;});
+        }
+
+        this.removeFrom = function(objects) {
+            objects.remove(this);
+        }
+    }
+    function Wave(x, y, r) {
+        BasicObject.call(this, x, y);
+
+        this.radius = isNaN(r) ? 1 : r;
+        this.color = 255;
+
+        this.draw = function(context) {
+            context.beginPath();
+            context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            context.strokeStyle = "rgb(" + this.color + ", " + this.color + ", " + this.color + ")";
+            context.stroke();
+        }
+
+        this.update = function(objects) {
+            this.color -= 20;
+            this.radius += 10;
+
+            if (this.color <= 0) {
+                this.removeFrom(objects);
+            }
+        }
+
+        this.collide = function(objects) {
+            var isCollided = 0;
+            for (i in objects) {
+                if (objects[i] instanceof Stone) {
+                    var d = Math.sqrt(Math.pow(this.x - objects[i].x, 2) + Math.pow(this.y - objects[i].y, 2));
+                    if (d < this.radius + objects[i].radius && d > Math.abs(this.radius - objects[i].radius)) {
+                        objects[i].isShocked = true;
+                        isCollided++;
+                    }
+                }
+            }
+            if (isCollided) {
+                this.removeFrom(objects);
+            }
+        }
+    }
+    Wave.prototype = new BasicObject();
+    function Stone(x, y, r) {
+        BasicObject.call(this, x, y);
+
+        this.radius = r;
+        this.isShocked = false;
+
+        this.draw = function(context) {
+            context.beginPath();
+            context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            context.fillStyle = "black";
+            context.fill();
+        }
+
+        this.update = function(objects) {
+            if (this.isShocked) {
+                var wave = new Wave(this.x, this.y, this.radius);
+                wave.addTo(objects);
+                this.isShocked = false;
+            }
+        }
+    }
+    Stone.prototype = new BasicObject();
+    function Engin() {
+        var canvas = document.getElementById("canvas");
+        canvas.width = screen.width - 30;
+        canvas.height = screen.height - 100;
+        var context = canvas.getContext("2d");
+
+        var buffer = document.createElement("canvas");
+        buffer.width = canvas.width;
+        buffer.height = canvas.height;
+        var bufferCtx = buffer.getContext("2d");
+
+        var objs = new Array();
+
+        const FPS = 20;
+
+        document.onmousedown = function(event) {
+            var wave = new Wave(event.clientX, event.clientY);
+            wave.addTo(objs);
+        }
+
+        this.manage = function() {
+            bufferCtx.fillRect(0, 0, buffer.width, buffer.height);
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (x in objs) {
+                if (objs[x].update) {
+                    objs[x].update(objs);
+                }
+            }
+
+            for (x in objs) {
+                if (objs[x].draw) {
+                    objs[x].draw(bufferCtx);
+                }
+            }
+
+            for (x in objs) {
+                if (objs[x].collide) {
+                    objs[x].collide(objs);
+                }
+            }
+
+            context.drawImage(buffer, 0, 0);
+        }
+
+        this.run = function() {
+            var s1 = new Stone(100, 100, 50);
+            var s2 = new Stone(canvas.width / 2, canvas.height / 2, 100);
+            s1.addTo(objs);
+            s2.addTo(objs);
+
+            setInterval(this.manage, 1000 / FPS);
+        }
+    }
+    window.onload = function() {
+        new Engin().run();
+    }
+</script>
+
