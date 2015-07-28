@@ -28,7 +28,7 @@ app.use(express.static(__dirname + '/public'));
 //     })
 // });
 
-var server = new mongodb.Server('121.37.60.186', 14072, { auto_reconnect: true });
+var server = new mongodb.Server('xxx.xxx.xxx.xxx', 14072, { auto_reconnect: true });
 //指定数据库
 var db = new mongodb.Db('student', server, { safe: true });
 if (db) {
